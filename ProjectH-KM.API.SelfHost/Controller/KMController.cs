@@ -25,14 +25,14 @@ namespace ProjectH_KM.API.SelfHost.Controller
         public HttpResponseMessage GetProducts()
         {
             List<Product> productsList;
-            productsList = KMRepository.GetProducts(_database, _login, _password);
+            productsList = BaseRepository.GetProducts(_database, _login, _password);
             return Request.CreateResponse(HttpStatusCode.OK, productsList);
         }
         [ActionName("addProducts")]
         [HttpPost]
         public HttpResponseMessage AddProducts([FromBody] List<Product> products)
         {
-            _response = KMRepository.AddProducts(_database, _login, _password, products);
+            _response = BaseRepository.AddProducts(_database, _login, _password, products);
             return Request.CreateResponse(HttpStatusCode.Created, _response);
         }
         [ActionName("getContractors")]
@@ -40,14 +40,14 @@ namespace ProjectH_KM.API.SelfHost.Controller
         public HttpResponseMessage GetContractors()
         {
             List<Contractor> contractorList;
-            contractorList = KMRepository.GetContractors(_database, _login, _password);
+            contractorList = BaseRepository.GetContractors(_database, _login, _password);
             return Request.CreateResponse(HttpStatusCode.OK, contractorList);
         }
         [ActionName("addContractors")]
         [HttpPost]
         public HttpResponseMessage AddContractors([FromBody] List<Contractor> contractors)
         {
-            _response = KMRepository.AddContractors(_database, _login, _password, contractors);
+            _response = BaseRepository.AddContractors(_database, _login, _password, contractors);
             return Request.CreateResponse(HttpStatusCode.Created, _response);
         }
     }
